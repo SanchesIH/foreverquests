@@ -1,0 +1,34 @@
+## Interface: 16001
+## Title: Forever Quests |cffc41f3b(Horda)|r
+## Notes: Horde quest chains for WoW Forever, BtWQuests-style, with completion tracking and map waypoints.
+## Notes-ptBR: Cadeias de missões da Horda para o WoW Forever, no estilo do BtWQuests, com progresso e marcação no mapa.
+## Author: Forever Quests
+## Version: 2.5.0
+## Category: Quests
+## Category-ptBR: Missões
+## IconTexture: Interface\Icons\INV_Misc_Map02
+## SavedVariables: ForeverQuestsDB
+## AddonCompartmentFunc: ForeverQuests_OnAddonCompartmentClick
+## AddonCompartmentFuncOnEnter: ForeverQuests_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: ForeverQuests_OnAddonCompartmentLeave
+## OptionalDeps: TomTom
+## X-Data-Source: QuestieDB (Forever) https://github.com/Questie/QuestieDB
+## X-License: GPL-3.0
+
+Locales.lua
+Data\Quests.lua
+Data\Chains.lua
+Data\Names.lua
+Data\Locale_ptBR.lua
+Data\QuestText.lua
+Data\Lore.lua
+Data\Lore_Riverglades.lua
+Data\Audio.lua
+Data\Extra.lua
+Core.lua
+Layout.lua
+Skin.lua
+Speech.lua
+UI.lua
+Story.lua
+Player.lua

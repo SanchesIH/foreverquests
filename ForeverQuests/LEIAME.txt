@@ -1,0 +1,107 @@
+FOREVER QUESTS (Horda) 2.4 — WoW Forever
+=========================================
+
+Instalação
+----------
+Apague a pasta antiga e copie a pasta "ForeverQuests" para:
+    World of Warcraft\_forever_\Interface\AddOns\
+O resultado deve ser:  ...\Interface\AddOns\ForeverQuests\ForeverQuests.toc
+
+Como abrir
+----------
+/fq   abre/fecha        /fq zona   abre na zona atual        /fq reset   reposiciona
+Botão na borda do minimapa (arraste para mover ao redor dele)
+Botão no mapa-múndi · compartimento de addons · tecla em Opções > Atalhos > AddOns
+
+A janela (no estilo do BtWQuests)
+---------------------------------
+No alto: voltar / avançar, o botão "aqui" (abre o mapa em que você está), as migalhas
+"Início > Mapa > Cadeia" e a busca. A setinha ao lado do mapa e da cadeia abre a lista dos
+outros mapas / das outras cadeias. A engrenagem abre as opções.
+
+À esquerda, a barra lateral:
+  Missões · Missões repetíveis · Missões de classe · Profissões · Masmorras e Raides ·
+  Campos de Batalha · Outros
+  "Missões repetíveis" junta diárias, entregas de reputação e contratos de todos os mapas.
+  Abaixo, os mapas daquela categoria, cada um com uma barra de progresso.
+  Os mapas que você terminou ficam no fim, em "Concluídas".
+
+Início
+------
+Cada mapa é um quadro. Borda cinza = ainda não começado; borda verde = começado.
+Os terminados ficam sob o separador "Concluídas", com o "certo" verde no canto.
+Passe o mouse: o quadro brilha em azul e aparecem dois ícones:
+  estrela  fixar no topo        círculo vermelho  ignorar (vai para "Ignoradas", no fim)
+
+Página de um mapa
+-----------------
+A história do lugar (o [-] recolhe), depois:
+  Como a história chega aqui   as missões-ponte que trazem você para este mapa
+  Cadeias de missões           na ordem da história: a cadeia que libera outra vem antes,
+                               e a linha principal do mapa (a que a história alcança vindo de
+                               outro mapa) vem antes das cadeias paralelas do mesmo nível
+  Missões avulsas
+  Concluídas                   cadeias e missões terminadas
+  Para onde a história segue   as missões-ponte que levam você para outro mapa
+  Ignoradas
+Clique nos separadores com [-] para recolher.
+
+Página de uma cadeia
+--------------------
+A árvore no centro e a história ao lado, ao mesmo tempo (como o registro de missões do mapa).
+  Clique numa missão da árvore   mostra a missão na história (e destaca o bloco)
+  Clique num bloco da história   destaca a missão na árvore
+  Clique direito                 marca no mapa (Shift: marca a entrega)
+  Botões no pé da história       "Mapa: quem dá" e "Mapa: entrega" da missão escolhida
+  Botão "Ocultar história"       deixa só a árvore (aí o clique marca no mapa, como antes)
+Cada entrada da cadeia começa com um quadro "Ir até <NPC>": quem entrega a primeira missão e
+onde ele está. Clique nele para marcar o NPC no mapa.
+As linhas ficam verdes quando a missão de cima foi concluída e laranja quando a de baixo está
+no seu registro. Missão disponível brilha em dourado; missão no registro, em amarelo.
+
+Missões-ponte
+-------------
+Missão-ponte é a que não tem objetivo no mapa: só manda você entregar algo ou falar com alguém
+em outra região, e assim apresenta a próxima (ex.: "Journey to the Crossroads", de Orgrimmar
+para os Sertões). O addon identifica 388 delas nos dados e marca:
+  - na história, com a linha "Missão-ponte: leva você para <mapa>";
+  - na árvore, com o ícone de viagem e o quadro tingido de azul;
+  - na página do mapa, nas seções de chegada e partida e no quadro da cadeia.
+
+Leitura em voz alta
+-------------------
+O alto-falante na história do lugar, em cada bloco da história e no topo do painel lê o texto,
+e abre o player de narração: uma janelinha própria (arraste para mover) que continua tocando
+mesmo com o diário fechado. Nela: anterior / tocar-parar / próxima, o tempo do trecho, e três
+botões para escolher o que ouvir — "O lugar", "Esta missão" (a selecionada) e "Cadeia inteira"
+(começa da missão selecionada). O alto-falante ao lado da busca abre o player.
+  - Riverglades tem narração gravada (pasta Sounds): voz natural de contador de histórias, em
+    português (pm_alex) e em inglês britânico (bm_fable), gerada com o modelo Kokoro.
+    IMPORTANTE: arquivos de som novos só aparecem depois de fechar e abrir o jogo (o /reload não
+    basta).
+  - O resto usa as vozes do Windows (Configurações > Hora e idioma > Fala), que são mais robóticas.
+    Troque essas vozes e a velocidade em Opções.
+
+Sem spoilers
+------------
+Opções > "Sem spoilers". Marcado, o addon mostra só o que você saberia antes de aceitar.
+Missões que você já concluiu continuam aparecendo inteiras.
+
+Nível
+-----
+Missões acima do seu nível ficam invisíveis. Para vê-las, marque "Mostrar missões acima do
+meu nível" em Opções. Se um mapa não tem nada no seu nível, tudo aparece em vermelho com aviso.
+
+Correções nos dados
+-------------------
+Missões liberadas ao aceitar outra ("Unlocks On Accept" no Wowhead) agora entram na mesma
+cadeia. Ex.: "Shard of an Infernal" e "Shard of a Felhound" fazem parte de "Knowledge of the
+Orb of Orahil" (bruxo), e escolher um dos caminhos não trava mais a missão seguinte.
+
+Dados
+-----
+Missões, NPCs e coordenadas: QuestieDB versão Forever (GPL-3.0) — github.com/Questie/QuestieDB
+Texto original das missões: cMaNGOS Classic 1.12 (GPL) — github.com/cmangos/classic-db
+Nomes em português: traduções do QuestieDB; quando faltam, o nome vem do jogo.
+Visual inspirado no BtWQuests (Breen). As texturas em Media\ foram desenhadas para este addon;
+as demais são do próprio jogo.
