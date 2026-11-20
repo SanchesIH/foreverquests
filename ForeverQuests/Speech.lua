@@ -115,6 +115,20 @@ function Speech:Recorded(key, lang)
     return t and t[key]
 end
 
+--- Remembers why something could not be played and says so once in the chat; the player
+--- window shows the short form when the playlist ends without having played anything.
+local PROBLEM_TEXT = {
+    SOUND_OFF = "TTS_SOUND_OFF", FILES = "TTS_FILES_MISSING", UNAVAILABLE = "TTS_UNAVAILABLE",
+    NO_PT = "TTS_NO_PT", NO_VOICES = "TTS_NO_VOICES", FAILED = "TTS_FAILED",
+}
+Speech.problems = {}
+function Speech:Problem(code)
+    if self.problems[code] then return end
+    self.problems[code] = true
+    self.problem = self.problem or code
+    ns.Print(L[PROBLEM_TEXT[code]] or code)
+end
+
 local function changed()
     if Speech.onChange then Speech.onChange(Speech.speaking) end
 end
@@ -159,9 +173,18 @@ end
 local function playRecorded(piece)
     token = token + 1
     local mine = token
-    local ok, willPlay, handle = pcall(PlaySoundFile, AUDIO_DIR .. audioCode(piece.lang) .. "\\" .. piece.audio .. ".ogg", "Dialog")
+    local path = AUDIO_DIR .. audioCode(piece.lang) .. "\\" .. piece.audio .. ".ogg"
+    -- the Dialog channel follows the player's dialog volume; when that channel is switched
+    -- off in the game's audio settings, play on Master instead
+    local ok, willPlay, handle = pcall(PlaySoundFile, path, "Dialog")
+    if not (ok and willPlay) then
+        ok, willPlay, handle = pcall(PlaySoundFile, path, "Master")
+    end
     if not ok or not willPlay then
-        -- the file is not there (new files need a full game restart): fall back to the voice
+        -- game sound is off, or the file is not there (new files need a full game restart):
+        -- note why, then fall back to the Windows voice
+        local soundOff = GetCVar and GetCVar("Sound_EnableAllSound") == "0"
+        Speech:Problem(soundOff and "SOUND_OFF" or "FILES")
         local t = clean(piece.text)
         local fallback = {}
         if t ~= "" then chunks(t, fallback, piece.lang) end
@@ -169,6 +192,7 @@ local function playRecorded(piece)
         return speakNext()
     end
     soundHandle = handle
+    Speech.played = true
     Speech.speaking = true
     Speech.clipStart, Speech.clipDur = GetTime and GetTime() or 0, piece.dur
     changed()
@@ -185,10 +209,7 @@ speakNext = function()
     Speech.clipStart, Speech.clipDur = nil, nil
     local voice = Speech:Available() and Speech:VoiceFor(piece.lang)
     if not voice then
-        if not Speech.warned then
-            Speech.warned = true
-            ns.Print(not Speech:Available() and L.TTS_UNAVAILABLE or (piece.lang == "ptBR" and L.TTS_NO_PT or L.TTS_NO_VOICES))
-        end
+        Speech:Problem(not Speech:Available() and "UNAVAILABLE" or (piece.lang == "ptBR" and "NO_PT" or "NO_VOICES"))
         return speakNext()
     end
     local rate = (ns.db and ns.db.ttsRate) or 0
@@ -201,9 +222,10 @@ speakNext = function()
         ok = pcall(VC.SpeakText, voice.voiceID, piece.text, dest, rate, vol)
     end
     if not ok then
-        ns.Print(L.TTS_FAILED)
+        Speech:Problem("FAILED")
         return speakNext()
     end
+    Speech.played = true
     Speech.speaking = true
     changed()
 end
@@ -222,7 +244,8 @@ function Speech:Play(items, title, start)
     self.items = items or {}
     self.title = title
     self.finished = false
-    self.warned = false
+    self.problem, self.played = nil, false
+    wipe(self.problems)
     self.index = (start or 1) - 1
     if #self.items == 0 then return end
     if ns.Player then ns.Player:Show() end
@@ -244,6 +267,8 @@ function Speech:Resume()
     halt()
     if self.finished then self.index = 0 end
     self.finished = false
+    self.problem, self.played = nil, false
+    wipe(self.problems)
     self.index = math.max(0, self.index - 1)
     nextItem()
 end

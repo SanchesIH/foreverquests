@@ -148,6 +148,9 @@ function Player:Update()
     local item = Speech.items[i]
     if n == 0 then
         f.now:SetText(L.PLAYER_EMPTY)
+    elseif Speech.finished and Speech.problem and not Speech.played then
+        -- nothing could be played: say why (the full explanation is in the chat)
+        f.now:SetText("|cffff6040" .. (L["PLAYER_" .. Speech.problem] or L.PLAYER_DONE) .. "|r")
     elseif Speech.finished then
         f.now:SetText(L.PLAYER_DONE)
     else
