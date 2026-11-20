@@ -1,4 +1,4 @@
-FOREVER QUESTS (Horda) 2.4 — WoW Forever
+FOREVER QUESTS (Horda) 2.6 — WoW Forever
 =========================================
 
 Instalação
@@ -74,13 +74,16 @@ O alto-falante na história do lugar, em cada bloco da história e no topo do pa
 e abre o player de narração: uma janelinha própria (arraste para mover) que continua tocando
 mesmo com o diário fechado. Nela: anterior / tocar-parar / próxima, o tempo do trecho, e três
 botões para escolher o que ouvir — "O lugar", "Esta missão" (a selecionada) e "Cadeia inteira"
-(começa da missão selecionada). O alto-falante ao lado da busca abre o player.
-  - Riverglades tem narração gravada (pasta Sounds): voz natural de contador de histórias, em
-    português (pm_alex) e em inglês britânico (bm_fable), gerada com o modelo Kokoro.
+(começa da missão selecionada).
+  - Riverglades e Durotar têm história narrada própria (o lugar, cada cadeia e cada missão, no
+    lugar do texto original) e narração gravada (pasta Sounds): voz natural de contador de
+    histórias, em português (pm_alex) e em inglês britânico (bm_fable), gerada com o modelo Kokoro.
     IMPORTANTE: arquivos de som novos só aparecem depois de fechar e abrir o jogo (o /reload não
     basta).
   - O resto usa as vozes do Windows (Configurações > Hora e idioma > Fala), que são mais robóticas.
-    Troque essas vozes e a velocidade em Opções.
+  - Se nada tocar, o player mostra o motivo em vermelho e o chat explica como resolver.
+
+A história do lugar aparece só na página do mapa, não dentro das cadeias.
 
 Sem spoilers
 ------------

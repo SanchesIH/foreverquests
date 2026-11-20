@@ -1008,19 +1008,13 @@ function UI:Create()
     opt:SetScript("OnClick", function() UI:ToggleOptions() end)
     self.optButton = opt
 
-    local player = Skin.IconButton(bar, 22, ns.Speech.SPEAKER_ATLAS, ns.Speech.SPEAKER_FILE, function() return L.PLAYER_TT end)
-    player:SetPoint("RIGHT", opt, "LEFT", -6, 0)
-    player:SetScript("OnClick", function() ns.Player:Toggle() end)
-    player:SetShown(ns.Speech:CanRead())
-    self.playerButton = player
-
     local search = TryCreate("EditBox", "ForeverQuestsSearchBox", bar, "SearchBoxTemplate")
     if not search then
         search = CreateFrame("EditBox", "ForeverQuestsSearchBox", bar, "InputBoxTemplate")
     end
     search:SetSize(210, 22)
     search:SetAutoFocus(false)
-    search:SetPoint("RIGHT", player, "LEFT", -10, 0)
+    search:SetPoint("RIGHT", opt, "LEFT", -10, 0)
     if search.Instructions then search.Instructions:SetText(L.SEARCH) end
     search:HookScript("OnTextChanged", function(self, userInput)
         local t = self:GetText() or ""

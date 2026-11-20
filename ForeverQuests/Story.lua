@@ -253,16 +253,9 @@ function Story:Render(cid, lay, focus, cat)
         return b
     end
 
-    -- the chain and the place
+    -- the chain (the place's own story is shown only on the map's page)
     local intro = cid and (ns.ChainLore(cid) or ns.ChainSummary(cid))
     if intro then block(L.LORE_CHAIN, { { text = intro, color = TEXT, speak = ns.Lang(), audio = cid and ("c" .. ns.C[cid][2]) } }) end
-    local zone = ns.ZoneLore(c[1])
-    if zone then
-        local first = zone:match("^(.-)\n\n") or zone
-        -- with recorded narration, show the whole text the narrator reads
-        if ns.Speech:Recorded("z" .. c[1], ns.Lang()) then first = zone end
-        block(L.LORE_PLACE:format(ns.CatName(c[1])), { { text = first, color = { 0.82, 0.78, 0.7 }, font = "GameFontHighlightSmall", speak = ns.Lang(), audio = (first == zone) and ("z" .. c[1]) or nil } })
-    end
 
     -- ways in
     local incoming = {}
