@@ -1,4 +1,4 @@
-FOREVER QUESTS (Horda) 2.8 — WoW Forever
+FOREVER QUESTS (Horda) 2.9 — WoW Forever
 =========================================
 
 Instalação
@@ -75,10 +75,10 @@ e abre o player de narração: uma janelinha própria (arraste para mover) que c
 mesmo com o diário fechado. Nela: anterior / tocar-parar / próxima, o tempo do trecho, e três
 botões para escolher o que ouvir — "O lugar", "Esta missão" (a selecionada) e "Cadeia inteira"
 (começa da missão selecionada).
-  - Riverglades, Durotar, Tanaris, Feralas e a Cratera Un'Goro têm história narrada própria (o
-    lugar, cada cadeia e cada missão, no lugar do texto original) e narração gravada (pasta
-    Sounds): voz natural de contador de histórias, em português (pm_alex) e em inglês britânico
-    (bm_fable), gerada com o modelo Kokoro.
+  - Riverglades, Durotar, Tanaris, Feralas, a Cratera Un'Goro e Azshara têm história narrada
+    própria (o lugar, cada cadeia e cada missão, no lugar do texto original) e narração gravada
+    (pasta Sounds): voz natural de contador de histórias, em português (pm_alex) e em inglês
+    britânico (bm_fable), gerada com o modelo Kokoro.
     IMPORTANTE: arquivos de som novos só aparecem depois de fechar e abrir o jogo (o /reload não
     basta).
   - O resto usa as vozes do Windows (Configurações > Hora e idioma > Fala), que são mais robóticas.

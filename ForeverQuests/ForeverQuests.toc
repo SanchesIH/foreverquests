@@ -3,7 +3,7 @@
 ## Notes: Horde quest chains for WoW Forever, BtWQuests-style, with completion tracking and map waypoints.
 ## Notes-ptBR: Cadeias de missões da Horda para o WoW Forever, no estilo do BtWQuests, com progresso e marcação no mapa.
 ## Author: Forever Quests
-## Version: 2.8.0
+## Version: 2.9.0
 ## Category: Quests
 ## Category-ptBR: Missões
 ## IconTexture: Interface\Icons\INV_Misc_Map02
@@ -27,6 +27,7 @@ Data\Lore_Durotar.lua
 Data\Lore_Tanaris.lua
 Data\Lore_Feralas.lua
 Data\Lore_UnGoro.lua
+Data\Lore_Azshara.lua
 Data\Audio.lua
 Data\Extra.lua
 Core.lua
